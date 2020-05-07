@@ -13,18 +13,18 @@ Les trajets sont contenus dans une liste chainée de trajets (cf. struct listeTr
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-
+#include <string>
 //------------------------------------------------------ Include personnel
-#include "Grandeur.h"
+#include "grandeur.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 
-void Grandeur::Afficher() const // Parcours de la liste avec un curseur et appel de la méthode Affichage pour chaque objet Trajet
+void Grandeur::Afficher() const
 {
-    cout << "Identifiant : " << Identifiant << " - Description : " << Description << " - Unité de mesure : " << Unite;
+    cout << "Identifiant : " << Identifiant << " - Description : " << Description << " - Unité de mesure : " << Unite << endl;
 }
 
 void Grandeur::SetIdentifiant( const string identifiant ) {
@@ -40,6 +40,7 @@ void Grandeur::SetUnite( const string unite ) {
 }
 
 string Grandeur::GetIdentifiant() {
+    cout << "Identifiant : " << Identifiant << endl;
     return Identifiant;
 }
 
@@ -53,14 +54,14 @@ string Grandeur::GetUnite() {
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Grandeur::Grandeur ( string Identifiant, string Description, string Unite )
+Grandeur::Grandeur ( string identifiant, string description, string unite )
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Grandeur>" << endl;
 #endif
-Identifiant = Identifiant;
-Description = Description;
-Unite = Unite;
+Identifiant = identifiant;
+Description = description;
+Unite = unite;
 }
 
 

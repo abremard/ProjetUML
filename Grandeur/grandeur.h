@@ -12,6 +12,7 @@ using namespace std;
 //---------- Interface de la classe <Grandeur> (fichier Grandeur.h) ----------------
 #if ! defined ( Grandeur_H )
 #define Grandeur_H
+
 //--------------------------------------------------- Interfaces utilisées
 //------------------------------------------------------------- Constantes
 
