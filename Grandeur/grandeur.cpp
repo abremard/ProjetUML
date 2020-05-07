@@ -27,6 +27,30 @@ void Grandeur::Afficher() const // Parcours de la liste avec un curseur et appel
     cout << "Identifiant : " << Identifiant << " - Description : " << Description << " - Unité de mesure : " << Unite;
 }
 
+void Grandeur::SetIdentifiant( const string identifiant ) {
+    Identifiant = identifiant;
+}
+
+void Grandeur::SetDescription( const string description ) {
+    Description = description;
+}
+
+void Grandeur::SetUnite( const string unite ) {
+    Unite = unite;
+}
+
+string Grandeur::GetIdentifiant() {
+    return Identifiant;
+}
+
+string Grandeur::GetDescription() {
+    return Description;
+}
+
+string Grandeur::GetUnite() {
+    return Unite;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 
 Grandeur::Grandeur ( string Identifiant, string Description, string Unite )

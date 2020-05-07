@@ -1,24 +1,24 @@
 /*************************************************************************
-Mesure:
-DESCRIPTIF : L'objet Mesure contiendra l'ensemble des trajets simples ou composés.
+Grandeur:
+DESCRIPTIF : L'objet Grandeur contiendra l'ensemble des trajets simples ou composés.
 Il sera instancié dans le main. L'utilisateur peut y ajouter autant de trajet qu'il veut.
-Les trajets sont contenus dans une liste chainée de trajets (cf. struct listeTrajet dans Mesure.h).
+Les trajets sont contenus dans une liste chainée de trajets (cf. struct listeTrajet dans Grandeur.h).
 
 *************************************************************************/
 using namespace std;
 #include <ctime>
 #include <string>
 
-//---------- Interface de la classe <Mesure> (fichier Mesure.h) ----------------
-#if ! defined ( Mesure_H )
-#define Mesure_H
+//---------- Interface de la classe <Grandeur> (fichier Grandeur.h) ----------------
+#if ! defined ( Grandeur_H )
+#define Grandeur_H
 //--------------------------------------------------- Interfaces utilisées
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 //------------------------------------------------------------------------
 
-class Mesure
+class Grandeur
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -26,10 +26,12 @@ public:
 
 //----------------------------------------------------- Méthodes publiques
     void Afficher() const;
+    string GetIdentifiant(), GetDescription(), GetUnite();
+    void SetIdentifiant( string identifiant ), SetDescription( string description ), SetUnite( string unite );
 
 //-------------------------------------------- Constructeurs - destructeur
-    Mesure ( std::time_t Timestamp, float Valeur, string Capteur );
-    ~Mesure ( );
+    Grandeur ( string Identifiant, string Description, string Unite );
+    ~Grandeur ( );
 
 //------------------------------------------------------------------ PRIVE
 
@@ -37,12 +39,12 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-time_t Timestamp;
-float Valeur;
-string Capteur;
+string Identifiant;
+string Description;
+string Unite;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Mesure>
+//-------------------------------- Autres définitions dépendantes de <Grandeur>
 
-#endif // Mesure_H
+#endif // Grandeur_H
 
