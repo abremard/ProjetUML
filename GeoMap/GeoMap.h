@@ -1,5 +1,5 @@
 #pragma once
-#include "Coordonnees.h"
+#include "../Coordonnees/Coordonnees.h"
 
 template <typename T>
 class GeoMap

@@ -2,8 +2,8 @@
 //
 
 #include <iostream>
-#include "Coordonnees.h"
-#include "GeoMap.h"
+#include "../Coordonnees/Coordonnees.h"
+#include "../GeoMap/GeoMap.h"
 
 using namespace std;
 
