@@ -38,7 +38,7 @@ public:
 
     //-------------------------------------------- Constructeurs - destructeur
 
-    Utilisateur(string _mail = "mail par défaut", string _motDePasse = "mdp par défaut", string _telephone = " ");
+    Utilisateur(string mail = "mail par défaut", string motDePasse = "mdp par défaut", string telephone = " ");
 
     Utilisateur(const Utilisateur & utilisateur);
 

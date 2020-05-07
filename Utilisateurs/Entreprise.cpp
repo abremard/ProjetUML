@@ -14,7 +14,22 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
+//------------------------------------------------------- Getter - setters
+int Entreprise::GetNumSIRET() const {
+return numSIRET;
+}
+
+void Entreprise::SetNumSIRET(int numSIRET) {
+numSIRET = numSIRET;
+}
+
 //----------------------------------------------------- Méthodes publiques
+Entreprise::Entreprise(string mail, string motDePasse, string telephone, int numSIRET)
+    :Utilisateur(mail,motDePasse,telephone)
+    ,numSIRET(numSIRET){
+}
+
+Entreprise:: ~Entreprise() {}
 
 //------------------------------------------------- Surcharge d'opérateurs
 
