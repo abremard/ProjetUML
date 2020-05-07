@@ -53,14 +53,14 @@ void Mesure::Afficher() const // Parcours de la liste avec un curseur et appel d
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Mesure::Mesure ( std::time_t Timestamp, float Valeur, string Capteur )
+Mesure::Mesure ( std::time_t timestamp, float valeur, string capteur )
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Mesure>" << endl;
 #endif
-Timestamp = Timestamp;
-Valeur = Valeur;
-Capteur = Capteur;
+Timestamp = timestamp;
+Valeur = valeur;
+Capteur = capteur;
 }
 
 
