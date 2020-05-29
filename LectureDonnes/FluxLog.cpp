@@ -1,16 +1,16 @@
 /*************************************************************************
-						   FluxLog  -  Gère la lecture d'un fichier Log
+						   FluxLog  -  Gï¿½re la lecture d'un fichier Log
 							 -------------------
-	début                : 17/01/2020
+	dï¿½but                : 17/01/2020
 	copyright            : (C) 2020 par Antoine MANDIN - Iyad TOUT
 	e-mail               : antoine.mandin@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <FluxLog> (fichier FluxLog.cpp) ------------
+//---------- Rï¿½alisation de la classe <FluxLog> (fichier FluxLog.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
-//-------------------------------------------------------- Include système
+//-------------------------------------------------------- Include systï¿½me
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -22,60 +22,71 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
+//----------------------------------------------------- Mï¿½thodes publiques
+Mesure& FluxLog::lireDonneesMesure(Mesure& mesure, Capteur tabCapteur[], Grandeur tabGrandeur[], int tailleTabCapteur,int tailleTabGrandeur){
+	time_t TimestampParsed;
+	string TimestampNotParsed;
+	float Valeur;
+	string valeurNotParsed;
+	string capteurNotParsed;
+	string grandeurNotParsed;
 
-Ligne& FluxLog::lire(Ligne& ligne)
-// Algorithme : 
-// Lit information par information le contenue d'une ligne d'un fichier 
-// log (ouvert avec stream)
-{
-	string adresseIP;
-	string userLogname;
-	string authenticatedUser;
-	string date;
-	string htmlType;	//GET , POST 
-	string url;			//document
-	string htmlVersion;	//HTTP/1.1
-	string statut;
-	string taille;
-	string referer;
-	string navigateur;
+	getline(*stream, TimestampNotParsed, ';');
+	getline(*stream, capteurNotParsed, ';');
+	getline(*stream, grandeurNotParsed, ';');
+	getline(*stream, valeurNotParsed, ';');
 
-	getline(*stream, adresseIP, ' ');
-	getline(*stream, userLogname, ' ');
-	getline(*stream, authenticatedUser, ' ');
-	stream->ignore(1);//[
-	getline(*stream, date, ']');
-	stream->ignore(2);// "
-	getline(*stream, htmlType, ' ');
-	getline(*stream, url, ' ');
-	getline(*stream, htmlVersion, '"');
-	stream->ignore(1);//"
-	getline(*stream, statut, ' ');
-	getline(*stream, taille, ' ');
-	stream->ignore(1);//"
-	getline(*stream, referer, '"');
-	stream->ignore(2);// "
-	getline(*stream, navigateur, '"');
-
-	//Passe à la ligne suivante, si le fichier n'est pas fini
 	if (!eof())
 		stream->ignore(999, '\n');
+	
+	mesure.SetValeur(stof(valeurNotParsed)); //set la valeur de la mesure
+	for(int i=0;i<tailleTabCapteur;++i){	 //set le capteur de la mesure
+		if(tabCapteur[i].getId()==capteurNotParsed)
+			mesure.SetCapteur(tabCapteur[i]);
+	}
+	for(int i=0;i<tailleTabGrandeur;++i){	 //set la grandeur de la mesure
+		if(tabGrandeur[i].GetIdentifiant()==grandeurNotParsed)
+			mesure.SetGrandeur(tabGrandeur[i]);
+	}
+	return mesure;
+}
 
-	// remplit les valeurs de la ligne en paramètre
-	ligne.adressIP = adresseIP;
-	ligne.userLogname = userLogname;
-	ligne.date = date;
-	ligne.requette = htmlType;
-	ligne.url = url;
-	ligne.htmlVers = htmlVersion;
-	ligne.status = statut;
-	ligne.taille = taille;
-	ligne.referer = referer;
-	ligne.navigateur = navigateur;
+Capteur& FluxLog::lireDonneesCapteur(Capteur& capteur){
+	string longitudeNotParsed;
+	string capteurNotParsed;
+	string latitudeNotParsed;
 
-	return ligne;
-} //----- Fin de lire
+	getline(*stream, capteurNotParsed, ';');
+	getline(*stream, latitudeNotParsed, ';');
+	getline(*stream, longitudeNotParsed, ';');
+
+	if (!eof())
+		stream->ignore(999, '\n');
+	
+	capteur.id=capteurNotParsed;
+	capteur.coordonnees=Coordonnees(stof(longitudeNotParsed),stof(latitudeNotParsed));
+
+	return capteur;
+}
+
+Grandeur& FluxLog::lireDonneesGrandeur(Grandeur& grandeur){
+	string descripNotParsed;
+	string grandeurNotParsed;
+	string uniteNotParsed;
+	
+	getline(*stream, grandeurNotParsed, ';');
+	getline(*stream, uniteNotParsed, ';');
+	getline(*stream, descripNotParsed, ';');
+
+	if (!eof())
+		stream->ignore(999, '\n');
+	
+	grandeur.Identifiant=grandeurNotParsed;
+	grandeur.Unite=uniteNotParsed;
+	grandeur.Description=descripNotParsed;
+
+	return grandeur;
+}
 
 bool FluxLog::eof()
 // Algorithme : 
@@ -85,8 +96,7 @@ bool FluxLog::eof()
 } //----- Fin de eof
 
 
-
-//------------------------------------------------- Surcharge d'opérateurs
+//------------------------------------------------- Surcharge d'opï¿½rateurs
 //Ensemble& Ensemble::operator = (const Ensemble& unEnsemble)
 // Algorithme :
 //
@@ -99,7 +109,7 @@ bool FluxLog::eof()
 FluxLog::FluxLog(const string filename)
 // Algorithme :
 // instantie l'objet (istream*) stream
-// Génère une erreur si le fichier est illisible (inexistant par exemple)
+// Gï¿½nï¿½re une erreur si le fichier est illisible (inexistant par exemple)
 {
 #ifdef MAP
 	cout << "Appel au constructeur de <FluxLog>" << endl;
@@ -115,7 +125,7 @@ FluxLog::FluxLog(const string filename)
 
 FluxLog::~FluxLog()
 // Algorithme :
-// libère l'espace mémoire lié à l'objet stream
+// libï¿½re l'espace mï¿½moire liï¿½ ï¿½ l'objet stream
 {
 #ifdef MAP
 	cout << "Appel au destructeur de <FluxLog>" << endl;
@@ -126,5 +136,5 @@ FluxLog::~FluxLog()
 
 //------------------------------------------------------------------ PRIVE
 
-//----------------------------------------------------- Méthodes protégées
+//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
