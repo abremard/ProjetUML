@@ -17,12 +17,19 @@ class Entreprise : public Utilisateur
 //----------------------------------------------------------------- PUBLIC
 	
 public:
+//---------------------------------------------------------------- Getters
+    int GetNumSIRET() const;
+
+//---------------------------------------------------------------- Setters
+    void SetNumSIRET(int numSIRET);
+
 //----------------------------------------------------- Méthodes publiques
 	
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur
-    Entreprise();
+    Entreprise(string mail = "mail par defaut entreprise", string motDePasse = "mdpEntreprise", string telephone = " ", int numSIRET = 1);
+    
     virtual ~Entreprise();
 
 //------------------------------------------------------------------ PRIVE
@@ -31,7 +38,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 	
 //----------------------------------------------------- Attributs protégés
-	unsigned int numSIRET;
+     int numSIRET;
   
 
 };

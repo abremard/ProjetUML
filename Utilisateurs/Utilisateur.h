@@ -4,39 +4,57 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <iostream>
+#include <string.h>
 using namespace std;
-
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
-class Trajet
+class Utilisateur
 {
-//----------------------------------------------------------------- PUBLIC
+    //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
 
-    
-//------------------------------------------------- Surcharge d'opérateurs
 
-//-------------------------------------------- Constructeurs - destructeur
-    utilisateur();
-    virtual ~utilisateur();
+    //---------------------------------------------------------------- Getters
+    string GetTelephone() const;
 
-//------------------------------------------------------------------ PRIVE
+    string GetMail() const;
+
+    string GetMotDePasse() const;
+
+    //---------------------------------------------------------------- Setters
+    void SetTelephone(string telephone);
+
+    void SetMotDePasse(string motDePasse);
+
+    void SetMail(string mail);
+
+    //----------------------------------------------------- Méthodes publiques
+
+    //------------------------------------------------- Surcharge d'opérateurs
+
+    //-------------------------------------------- Constructeurs - destructeur
+
+    Utilisateur(string mail = "mail par défaut", string motDePasse = "mdp par défaut", string telephone = " ");
+
+    Utilisateur(const Utilisateur & utilisateur);
+
+    virtual ~Utilisateur();
+
+    //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
+    //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
-    Sring mail; 
-    Sring motDePasse;
-    String Telephone;
+    //----------------------------------------------------- Attributs protégés
+    string motDePasse;
+    string telephone;
+    string mail;
 };
 
 //----------------------------- Autres définitions dépendantes de <Utilisateur>
-
 
 #endif // UTILISATEUR_H

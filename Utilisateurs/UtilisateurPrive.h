@@ -31,9 +31,9 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 	
 //----------------------------------------------------- Attributs protégés
-	String nom;
-    String prenom;
-    String score;
+	string nom;
+    string prenom;
+    string score;
 
 };
 

@@ -13,11 +13,47 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 
+//------------------------------------------------------- Getter - setters
+void Utilisateur::SetMotDePasse(string motDePasse) {
+motDePasse = motDePasse;
+}
+void Utilisateur::SetMail(string mail) {
+mail = mail;
+}
+void Utilisateur::SetTelephone(string telephone) {
+telephone = telephone;
+}
+string Utilisateur::GetTelephone() const {
+return telephone;
+}
+string Utilisateur::GetMotDePasse() const {
+return motDePasse;
+}
+string Utilisateur::GetMail() const {
+return mail;
+}
+
 //----------------------------------------------------- Méthodes publiques
 
 //------------------------------------------------- Surcharge d'opérateurs
 
+
 //-------------------------------------------- Constructeurs - destructeur
+
+Utilisateur::Utilisateur(string mail, string motDePasse, string telephone)
+    :mail(mail) 
+    ,motDePasse(motDePasse) 
+    ,telephone(telephone) {
+}
+
+Utilisateur::Utilisateur(const Utilisateur & utilisateur)
+    :mail(utilisateur.GetMail())
+    ,telephone(utilisateur.GetTelephone())
+    ,motDePasse(utilisateur.GetMotDePasse())
+    {
+}
+
+Utilisateur::~Utilisateur () {}
 
 //------------------------------------------------------------------ PRIVE
 
