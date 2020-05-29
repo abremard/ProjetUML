@@ -33,6 +33,9 @@ public:
     void SetTimestamp(time_t timestamp);
     void SetValeur(float valeur);
     void SetCapteur(Capteur capteur);
+    inline bool operator <(const Mesure& coord) const {
+        return	Timestamp < coord.Timestamp;
+    }
 
 //-------------------------------------------- Constructeurs - destructeur
     Mesure ( std::time_t Timestamp, float Valeur, Capteur capteur );
