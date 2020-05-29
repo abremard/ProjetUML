@@ -18,12 +18,14 @@ int main()
     cout << "Distance Grenoble-Lyon : " << lyon.distanceTo(grenoble) << endl;
     cout << "Distance Paris-New York : " << Coordonnees::distance(paris, newyork) << endl;
 
+    /*
     GeoMap<int> g;
     for (int i = -89; i <= 89; ++i)
     {
         g.insert(i, Coordonnees((double)i, (double)i));
         cout << "taille : " << g.size() << endl;
     }
+    */
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
