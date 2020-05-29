@@ -4,7 +4,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-const class Coordonnees
+class Coordonnees
 {
 	public:
 		// en metres, rayon moyen de la Terre (https://fr.wikipedia.org/wiki/Terre)
@@ -18,11 +18,17 @@ const class Coordonnees
 			: Coordonnees(coord.longitude, coord.latitude, coord.radius)
 		{}
 
-		Coordonnees& operator =(const Coordonnees& coord) {
-			longitude = coord.getLongitude();
+		inline Coordonnees& operator =(const Coordonnees& coord) {
+			longitude = coord.longitude;
 			latitude = coord.latitude;
 			radius = coord.radius;
 			return *this;
+		}
+
+		inline bool operator ==(const Coordonnees& coord) const {
+			return	( longitude == coord.longitude ) &&
+					( latitude == coord.latitude ) &&
+					( radius == coord.radius );
 		}
 
 		inline double getLongitude() const { return longitude; }

@@ -5,7 +5,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-#include "Coordonnees.h"
+#include "../Coordonnees/Coordonnees.h"
 
 
 
@@ -14,7 +14,7 @@ using namespace std;
 class Capteur
 {
 	public:
-		Capteur(const string& idCapteur, const Coordonnees& coordonneesCapteur, const string& descriptionCapteur = "") 
+		Capteur(const string& idCapteur = "", const Coordonnees& coordonneesCapteur = Coordonnees(), const string& descriptionCapteur = "") 
 			: id(idCapteur), coordonnees(coordonneesCapteur), description(descriptionCapteur)
 		{}
 
