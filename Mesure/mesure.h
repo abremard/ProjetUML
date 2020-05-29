@@ -8,6 +8,7 @@ Les trajets sont contenus dans une liste chainée de trajets (cf. struct listeTr
 using namespace std;
 #include <ctime>
 #include <string>
+#include "../Capteur/Capteur.h"
 
 //---------- Interface de la classe <Mesure> (fichier Mesure.h) ----------------
 #if ! defined ( Mesure_H )
@@ -26,10 +27,14 @@ public:
 
 //----------------------------------------------------- Méthodes publiques
     void Afficher() const;
-    time_t GetTimestamp();
-    float GetValeur();
-    string GetCapteur();
+    time_t GetTimestamp() const;
+    float GetValeur() const;
+    string GetCapteur() const;
     void SetTimestamp( time_t timestamp ), SetValeur( float valeur ), SetCapteur( string capteur );
+
+    bool operator <(const Mesure& m) {
+        return this->GetTimestamp() < m.GetTimestamp();
+    }
 
 //-------------------------------------------- Constructeurs - destructeur
     Mesure ( std::time_t Timestamp, float Valeur, string Capteur );
@@ -43,7 +48,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
 time_t Timestamp;
 float Valeur;
-string Capteur;
+Capteur capteur;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Mesure>

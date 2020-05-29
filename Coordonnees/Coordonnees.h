@@ -4,7 +4,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-const class Coordonnees
+class Coordonnees
 {
 	public:
 		// en metres, rayon moyen de la Terre (https://fr.wikipedia.org/wiki/Terre)
