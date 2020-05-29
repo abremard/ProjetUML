@@ -27,10 +27,12 @@ public:
 
 //----------------------------------------------------- Méthodes publiques
     void Afficher() const;
-    time_t GetTimestamp();
-    float GetValeur();
-    Capteur GetCapteur();
-    void SetTimestamp( time_t timestamp ), SetValeur( float valeur ), SetCapteur( Capteur capteur );
+    time_t GetTimestamp() const;
+    float GetValeur() const;
+    Capteur GetCapteur() const;
+    void SetTimestamp(time_t timestamp);
+    void SetValeur(float valeur);
+    void SetCapteur(Capteur capteur);
 
 //-------------------------------------------- Constructeurs - destructeur
     Mesure ( std::time_t Timestamp, float Valeur, Capteur capteur );

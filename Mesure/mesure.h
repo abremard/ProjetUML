@@ -29,15 +29,13 @@ public:
     void Afficher() const;
     time_t GetTimestamp() const;
     float GetValeur() const;
-    string GetCapteur() const;
-    void SetTimestamp( time_t timestamp ), SetValeur( float valeur ), SetCapteur( string capteur );
-
-    bool operator <(const Mesure& m) {
-        return this->GetTimestamp() < m.GetTimestamp();
-    }
+    Capteur GetCapteur() const;
+    void SetTimestamp(time_t timestamp);
+    void SetValeur(float valeur);
+    void SetCapteur(Capteur capteur);
 
 //-------------------------------------------- Constructeurs - destructeur
-    Mesure ( std::time_t Timestamp, float Valeur, string Capteur );
+    Mesure ( std::time_t Timestamp, float Valeur, Capteur capteur );
     ~Mesure ( );
 
 //------------------------------------------------------------------ PRIVE

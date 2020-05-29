@@ -16,21 +16,22 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Mesure.h"
+
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 
-time_t Mesure::GetTimestamp() {
+time_t Mesure::GetTimestamp() const  {
     return Timestamp;
 }
 
-float Mesure::GetValeur() {
+float Mesure::GetValeur() const {
     return Valeur;
 }
 
-string Mesure::GetCapteur() const {
+Capteur Mesure::GetCapteur() const {
     return capteur;
 }
 
@@ -42,7 +43,7 @@ void Mesure::SetValeur( float valeur ) {
     Valeur = valeur;
 }
 
-void Mesure::SetCapteur( Capteur c ) {
+void Mesure::SetCapteur( Capteur capteur ) {
     capteur = capteur;
 }
 
@@ -52,15 +53,14 @@ void Mesure::Afficher() const // Parcours de la liste avec un curseur et appel d
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-
-Mesure::Mesure ( std::time_t timestamp, float valeur, string capteur )
+Mesure::Mesure ( std::time_t timestamp, float valeur, Capteur capteur = Capteur() )
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <Mesure>" << endl;
-#endif
-Timestamp = timestamp;
-Valeur = valeur;
-Capteur = capteur;
+    #ifdef MAP
+        cout << "Appel au constructeur de <Mesure>" << endl;
+    #endif
+    Timestamp = timestamp;
+    Valeur = valeur;
+    capteur = capteur;
 }
 
 

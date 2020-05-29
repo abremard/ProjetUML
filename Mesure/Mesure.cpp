@@ -23,15 +23,15 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
-time_t Mesure::GetTimestamp() {
+time_t Mesure::GetTimestamp() const  {
     return Timestamp;
 }
 
-float Mesure::GetValeur() {
+float Mesure::GetValeur() const {
     return Valeur;
 }
 
-Capteur Mesure::GetCapteur() {
+Capteur Mesure::GetCapteur() const {
     return capteur;
 }
 
@@ -53,8 +53,7 @@ void Mesure::Afficher() const // Parcours de la liste avec un curseur et appel d
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-
-Mesure::Mesure ( std::time_t timestamp, float valeur, Capteur capteur )
+Mesure::Mesure ( std::time_t timestamp, float valeur, Capteur capteur = Capteur() )
 {
     #ifdef MAP
         cout << "Appel au constructeur de <Mesure>" << endl;
