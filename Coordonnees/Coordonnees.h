@@ -18,11 +18,17 @@ class Coordonnees
 			: Coordonnees(coord.longitude, coord.latitude, coord.radius)
 		{}
 
-		Coordonnees& operator =(const Coordonnees& coord) {
-			longitude = coord.getLongitude();
+		inline Coordonnees& operator =(const Coordonnees& coord) {
+			longitude = coord.longitude;
 			latitude = coord.latitude;
 			radius = coord.radius;
 			return *this;
+		}
+
+		inline bool operator ==(const Coordonnees& coord) const {
+			return	( longitude == coord.longitude ) &&
+					( latitude == coord.latitude ) &&
+					( radius == coord.radius );
 		}
 
 		inline double getLongitude() const { return longitude; }
