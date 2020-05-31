@@ -9,9 +9,12 @@ using namespace std;
 #include <iostream>
 
 /*
-// Main de tests
-void identificationMesureAberantes(Mesure* mesuresArray, int nbMesure);
-
+// Main de tests:
+    //dans le repertoire Mesure:
+    //g++ -c Mesure.cpp
+    //dans le repertoire Coherence Mesure:
+    //g++ -o exeCoherence CoherenceMesure.cpp ../Mesure/Mesure.o 
+void identificationMesureAberantes(const Mesure* mesuresArray,const int nbMesure);
 int main()
 {
     Mesure m1 = Mesure();
@@ -48,12 +51,12 @@ int main()
     identificationMesureAberantes(mesuresArray,sizeof(mesuresArray)/sizeof(*mesuresArray));
 
     return 0;
-}
-*/
+}*/
+
 
 //Test de Chevaunet
 //le but est de déterminer pour une ValeurSuspecte si elle abérante, conaissant la moyenne, la variance et la taille de l'echantillon de données
-float calculTestChauvenet(Mesure & mesureSuspecte, int nbMesure, float moyenne, float ecartTye){
+float calculTestChauvenet(const Mesure & mesureSuspecte,const int nbMesure,const float moyenne,const float ecartTye){
 
     bool res = true;
 
@@ -66,7 +69,7 @@ float calculTestChauvenet(Mesure & mesureSuspecte, int nbMesure, float moyenne, 
 }
 
 //calcul de la moyenne d'un tableau de mesures
-float moyenneMesures(Mesure* mesuresArray, int nbMesure)
+float moyenneMesures(const Mesure* mesuresArray,const int nbMesure)
 {
     float moyenne = 0;
     for(int i = 0; i < nbMesure; i++){
@@ -77,7 +80,7 @@ float moyenneMesures(Mesure* mesuresArray, int nbMesure)
 }
 
 //calcul de l'ecart type d'un tableau de mesures
-float eTypeMesures(Mesure* mesuresArray, int nbMesure, float moyenne)
+float eTypeMesures(const Mesure* mesuresArray,const int nbMesure,const float moyenne)
 {
     float eType = 0 ;
      for(int j = 0; j < nbMesure; j++){
@@ -91,7 +94,7 @@ float eTypeMesures(Mesure* mesuresArray, int nbMesure, float moyenne)
 
 
 //lorsque l'on reçoit un tableau de mesures d'un même capteur -> repérer les valeurs suspectes
-void identificationMesureAberantes(Mesure* mesuresArray, int nbMesure){
+void identificationMesureAberantes(const Mesure* mesuresArray,const int nbMesure){
 
     //calcul moyenne
     float moyenne = moyenneMesures(mesuresArray, nbMesure);
