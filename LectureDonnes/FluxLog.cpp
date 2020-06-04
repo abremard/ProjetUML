@@ -49,7 +49,7 @@ Mesure& FluxLog::lireDonneesMesure(Mesure& mesure, Capteur tabCapteur[], Grandeu
 			mesure.SetGrandeur(tabGrandeur[i]);
 	}
 	struct tm tm;
-	strptime(TimestampNotParsed,"%Y-%m-%d %H:%M:%S",&tm);
+	strptime(TimestampNotParsed.c_str(),"%Y-%m-%d %H:%M:%S",&tm);
 	TimestampParsed=mktime(&tm);
 	return mesure;
 }

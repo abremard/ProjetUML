@@ -40,7 +40,7 @@ public:
     }
 
 //-------------------------------------------- Constructeurs - destructeur
-    Mesure ( std::time_t Timestamp, float Valeur, Capteur capteur, Grandeur grandeur );
+    Mesure ( std::time_t Timestamp, float Valeur, Capteur capteur, Grandeur grandeur = Grandeur() );
     ~Mesure ( );
 
 //------------------------------------------------------------------ PRIVE
