@@ -27,13 +27,11 @@ class GeoMap
 			return c.getLongitude() >= bounds.minLongitude && c.getLongitude() <= bounds.maxLongitude && c.getLatitude() >= bounds.minLatitude && c.getLatitude() <= bounds.maxLatitude;
 		}
 
-		// Retourne le point de la région le plus proche du point en paramètre
 		inline Coordonnees projection(const Coordonnees& point) const {
-			Coordonnees c(
+			return Coordonnees(
 				point.getLongitude() > bounds.maxLongitude ? bounds.maxLongitude : (point.getLongitude() <= bounds.minLongitude ? bounds.minLongitude : point.getLongitude()),
 				point.getLatitude() > bounds.maxLatitude ? bounds.maxLatitude : (point.getLatitude() <= bounds.minLatitude ? bounds.minLatitude : point.getLatitude())
 			);
-			return c;
 		}
 
 		bool insert(const Mesure& mesure);
