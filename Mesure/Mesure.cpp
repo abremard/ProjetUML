@@ -35,6 +35,10 @@ Capteur Mesure::GetCapteur() const {
     return capteur;
 }
 
+Grandeur Mesure::GetGrandeur() const {
+    return grandeur;
+}
+
 void Mesure::SetTimestamp( time_t timestamp ) {
     Timestamp = timestamp;
 }
@@ -47,13 +51,17 @@ void Mesure::SetCapteur( Capteur capteur ) {
     capteur = capteur;
 }
 
+void Mesure::SetGrandeur( Grandeur grandeur ) {
+    grandeur = grandeur;
+}
+
 void Mesure::Afficher() const // Parcours de la liste avec un curseur et appel de la méthode Affichage pour chaque objet Trajet
 {
     cout << "Date : " << Timestamp << " - Valeur : " << Valeur;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-Mesure::Mesure ( std::time_t timestamp, float valeur, Capteur capteur = Capteur() )
+Mesure::Mesure ( std::time_t timestamp, float valeur, Capteur capteur = Capteur(),Grandeur grandeur = Grandeur() )
 {
     #ifdef MAP
         cout << "Appel au constructeur de <Mesure>" << endl;
@@ -61,6 +69,7 @@ Mesure::Mesure ( std::time_t timestamp, float valeur, Capteur capteur = Capteur(
     Timestamp = timestamp;
     Valeur = valeur;
     capteur = capteur;
+    grandeur = grandeur;
 }
 
 

@@ -23,4 +23,5 @@ class Capteur
 		string id;
 		Coordonnees coordonnees;
 		string description;
+	friend class FluxLog; 
 };

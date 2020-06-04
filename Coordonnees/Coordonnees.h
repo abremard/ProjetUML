@@ -11,7 +11,7 @@ class Coordonnees
 		// en metres, rayon moyen de la Terre (https://fr.wikipedia.org/wiki/Terre)
 		static constexpr double DEFAULT_RADIUS = 6371008.0;
 
-		// longitude entre -180° et 180°, latitude entre -90° et 90°, rayon positif
+		// longitude entre -180ï¿½ et 180ï¿½, latitude entre -90ï¿½ et 90ï¿½, rayon positif
 		Coordonnees(double Longitute = 0.0, double Latitude = 0.0, double Radius = DEFAULT_RADIUS)
 			: longitude(Longitute), latitude(Latitude), radius(Radius)
 		{}
@@ -82,6 +82,7 @@ class Coordonnees
 			xyz[2] = sin(longitueRadian) * cosLatitudeRadius;
 			return xyz;
 		}
+	friend class FluxLog; 
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Coordonnees& co) {

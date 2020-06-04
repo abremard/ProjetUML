@@ -43,6 +43,8 @@ protected:
 string Identifiant;
 string Description;
 string Unite;
+
+friend class FluxLog; 
 };
 
 //-------------------------------- Autres définitions dépendantes de <Grandeur>

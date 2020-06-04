@@ -9,7 +9,7 @@ using namespace std;
 #include <ctime>
 #include <string>
 #include "../Capteur/Capteur.h"
-
+#include "../Grandeur/Grandeur.h"
 //---------- Interface de la classe <Mesure> (fichier Mesure.h) ----------------
 #if ! defined ( Mesure_H )
 #define Mesure_H
@@ -30,15 +30,17 @@ public:
     time_t GetTimestamp() const;
     float GetValeur() const;
     Capteur GetCapteur() const;
+    Grandeur GetGrandeur() const;
     void SetTimestamp(time_t timestamp);
     void SetValeur(float valeur);
     void SetCapteur(Capteur capteur);
+    void SetGrandeur(Grandeur grandeur);
     inline bool operator <(const Mesure& coord) const {
         return	Timestamp < coord.Timestamp;
     }
 
 //-------------------------------------------- Constructeurs - destructeur
-    Mesure ( std::time_t Timestamp, float Valeur, Capteur capteur );
+    Mesure ( std::time_t Timestamp, float Valeur, Capteur capteur, Grandeur grandeur );
     ~Mesure ( );
 
 //------------------------------------------------------------------ PRIVE
@@ -50,6 +52,7 @@ protected:
 time_t Timestamp;
 float Valeur;
 Capteur capteur;
+Grandeur grandeur;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Mesure>

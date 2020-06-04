@@ -1,7 +1,7 @@
 /*************************************************************************
-						   FluxLog  -  Gère la lecture d'un fichier Log
+						   FluxLog  -  Gï¿½re la lecture d'un fichier Log
 							 -------------------
-	début                : 17/01/2020
+	dï¿½but                : 17/01/2020
 	copyright            : (C) 2020 par Antoine MANDIN - Iyad TOUT
 	e-mail               : antoine.mandin@insa-lyon.fr
 *************************************************************************/
@@ -10,19 +10,22 @@
 #if ! defined ( FLUX_LOG_H )
 #define FLUX_LOG_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 #include "Ligne.h"
+#include "../Mesure/Mesure.h"
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <FluxLog>
+// Rï¿½le de la classe <FluxLog>
 // Lit ligne par ligne le contenu d'un fichier .log
 // Utilise la classe Ligne pour stocker (et retourner) ces informations
 //------------------------------------------------------------------------
@@ -32,17 +35,12 @@ class FluxLog
 	//----------------------------------------------------------------- PUBLIC
 
 public:
-	//----------------------------------------------------- Méthodes publiques
+	//----------------------------------------------------- Mï¿½thodes publiques
 	
-		Ligne& lire(Ligne & ligne);
-		// Mode d'emploi :
-		//	Retourne un objet Ligne avec les informations contenues dans la 
-		//	ligne courant du fichier log ouvert
-		// Contrat :
-		//	le stream doit être correct (good)
-		//  La ligne ne doit pas être null
-
+		Mesure& lireDonneesMesure(Mesure & mesure, Capteur tabCapteur[], Grandeur tabGrandeur[],int tailleTabCapteur,int tailleTabGrandeur);
 		bool eof();
+		Capteur& FluxLog::lireDonneesCapteur(Capteur& capteur);
+		Grandeur& FluxLog::lireDonneesGrandeur(Grandeur& grandeur);
 		// Mode d'emploi :
 		//	Retourne si l'on a atteind la fin du fichier
 
@@ -53,23 +51,23 @@ public:
 	// Mode d'emploi :
 	//	ouvre le fichier [filename] en lecutre
 	// Contrat :
-	//	le fichier doit exister et être lisible
-	//  Autrement une erreur est affichée sur stderr
+	//	le fichier doit exister et ï¿½tre lisible
+	//  Autrement une erreur est affichï¿½e sur stderr
 
 	virtual ~FluxLog();
 	// Mode d'emploi :
-	//	libère les espaces mémoires alloués
+	//	libï¿½re les espaces mï¿½moires allouï¿½s
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+	//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-	//----------------------------------------------------- Attributs protégés
+	//----------------------------------------------------- Attributs protï¿½gï¿½s
 	ifstream* stream;
 };
 
-//-------------------------------- Autres définitions dépendantes de <FluxLog>
+//-------------------------------- Autres dï¿½finitions dï¿½pendantes de <FluxLog>
 
 #endif // FLUX_LOG_H
 
