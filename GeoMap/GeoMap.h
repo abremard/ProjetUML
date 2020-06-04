@@ -35,6 +35,7 @@ class GeoMap
 				{
 					size += content.values.values[i].size();
 				}
+				return size;
 			}
 			else
 			{
@@ -260,7 +261,7 @@ class GeoMap
 			}
 		}
 
-		list<Mesure>& get(const Coordonnees& center = Coordonnees(), double rayon = 0, time_t debut = (time_t)0, time_t fin = (time_t)(~0u)) const {
+		list<Mesure> get(const Coordonnees& center = Coordonnees(), double rayon = 0, time_t debut = (time_t)0, time_t fin = (time_t)(~0u)) const {
 			list<Mesure> lm;
 
 			if (inArea(center) || center.distanceTo(projection(center)) <= rayon)
@@ -290,10 +291,10 @@ class GeoMap
 				}
 				else
 				{
-					lm.merge((*content.subMaps.topLeft).get(center, rayon, debut, fin));
-					lm.merge((*content.subMaps.topRight).get(center, rayon, debut, fin));
-					lm.merge((*content.subMaps.bottomLeft).get(center, rayon, debut, fin));
-					lm.merge((*content.subMaps.bottomRight).get(center, rayon, debut, fin));
+					for (Mesure m : (*content.subMaps.topLeft).get(center, rayon, debut, fin)) { lm.push_back(m); }
+					for (Mesure m : (*content.subMaps.topRight).get(center, rayon, debut, fin)) { lm.push_back(m); }
+					for (Mesure m : (*content.subMaps.bottomLeft).get(center, rayon, debut, fin)) { lm.push_back(m); }
+					for (Mesure m : (*content.subMaps.bottomRight).get(center, rayon, debut, fin)) { lm.push_back(m); }
 				}
 			}
 
@@ -344,7 +345,7 @@ class GeoMap_TEST
 		void run() {
 			inArea_TEST();
 			projection_TEST();
-			insert_size_TEST();
+			insert_size_get_TEST();
 		}
 
 		void inArea_TEST() {
@@ -377,17 +378,32 @@ class GeoMap_TEST
 			}
 		}
 
-		void insert_size_TEST() {
+		void insert_size_get_TEST() {
 			GeoMap geo(-50, 50, -50, 50);
 			for (int i = -10; i <= 10; i++)
 			{
 				for (int j = -10; j <= 10; j++)
 				{
-					Mesure m(0, 0, Capteur("", Coordonnees(i, j)));
-					geo.insert(m);
-					cout << geo.size() << " ";
+					Coordonnees co = Coordonnees(i, j);
+					Capteur ca = Capteur("", co);
+					Mesure m((i+j)*(i+j), i + j, ca);
+					bool b = geo.insert(m);
+					cout << geo.size() << (b ? "^" : "v") << " ";
 				}
 			}
+
+			cout << endl;
+
+			for (int i = 1; i <= 10000000; i*=10)
+			{
+				list<Mesure> lm = geo.get(Coordonnees(3, 2), i);
+				for (Mesure m : lm)
+				{
+					m.Afficher();
+				}
+				cout << endl;
+			}
+			
 		}
 };
 
