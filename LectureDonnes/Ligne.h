@@ -1,8 +1,8 @@
 /*************************************************************************
-						   Ligne  -  Représentation d'une ligne contenue
+						   Ligne  -  Reprï¿½sentation d'une ligne contenue
 								dans un fichier .log
 							 -------------------
-	début                : 17/01/2020
+	dï¿½but                : 17/01/2020
 	copyright            : (C) 2020 par Antoine MANDIN - Iyad TOUT
 	e-mail               : antoine.mandin@insa-lyon.fr
 *************************************************************************/
@@ -11,8 +11,9 @@
 #if ! defined ( LIGNE_H )
 #define LIGNE_H
 
-//--------------------------------------------------- Interfaces utilisées
+//--------------------------------------------------- Interfaces utilisï¿½es
 #include <string>
+#include <iostream>
 using namespace std;
 
 //------------------------------------------------------------- Constantes
@@ -20,7 +21,7 @@ using namespace std;
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <Ligne>
+// Rï¿½le de la classe <Ligne>
 //
 //
 //------------------------------------------------------------------------
@@ -32,15 +33,15 @@ friend class FluxLog;
 friend class Stockage;
 
 public:
-	//----------------------------------------------------- Méthodes publiques
-		// type Méthode ( liste des paramètres );
+	//----------------------------------------------------- Mï¿½thodes publiques
+		// type Mï¿½thode ( liste des paramï¿½tres );
 		// Mode d'emploi :
 		//
 		// Contrat :
 		//
 
 
-	//------------------------------------------------- Surcharge d'opérateurs
+	//------------------------------------------------- Surcharge d'opï¿½rateurs
 
 	bool estImage() const;
 	// Mode d'emploi :
@@ -50,7 +51,7 @@ public:
 	int getHeure() const;
 	// Mode d'emploi :
 	// Contrat :
-	//	Retourne l'heure (tronquée) d'occurence de la ligne
+	//	Retourne l'heure (tronquï¿½e) d'occurence de la ligne
 
 //-------------------------------------------- Constructeurs - destructeur
 	Ligne(string ad="",string useLog="",string autUse="",string dat="",
@@ -70,9 +71,9 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 protected:
-	//----------------------------------------------------- Méthodes protégées
+	//----------------------------------------------------- Mï¿½thodes protï¿½gï¿½es
 
-	//----------------------------------------------------- Attributs protégés
+	//----------------------------------------------------- Attributs protï¿½gï¿½s
 	string adressIP;
 	string userLogname;
 	string authenticatedUser;
@@ -86,7 +87,7 @@ protected:
 	string navigateur;
 };
 
-//-------------------------------- Autres définitions dépendantes de <Ligne>
+//-------------------------------- Autres dï¿½finitions dï¿½pendantes de <Ligne>
 
 #endif // LIGNE_H
 
