@@ -68,8 +68,8 @@ Mesure::Mesure ( std::time_t timestamp, float valeur, Capteur capteur,Grandeur g
     #endif
     Timestamp = timestamp;
     Valeur = valeur;
-    capteur = capteur;
-    grandeur = grandeur;
+    this->capteur = capteur;
+    this->grandeur = grandeur;
 }
 
 
