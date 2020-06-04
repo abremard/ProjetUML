@@ -1,5 +1,6 @@
 #pragma once
 #include <stdlib.h>
+#include <iostream>
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -35,7 +36,7 @@ class Coordonnees
 		inline double getLatitude() const { return latitude; }
 		inline double getRadius() const { return radius; }
 
-		// distance non géodésique
+		// distance non géodésique, en metres
 		double distanceTo(const Coordonnees& coord) const {
 			double* pointA = toXYZ();
 			double* pointB = coord.toXYZ();
@@ -71,18 +72,18 @@ class Coordonnees
 				   y
 			*/
 
-			double longitueRadian = longitude * M_PI / 180.0;
-			double latitudeRadian = latitude * M_PI / 180.0;
-			double cosLatitue = cos(latitudeRadian);
-
-			double x = sin(latitudeRadian);
-			double y = cos(longitueRadian) * cosLatitue;
-			double z = sin(longitueRadian) * cosLatitue;
+			const double longitueRadian = longitude * M_PI / 180.0;
+			const double latitudeRadian = latitude * M_PI / 180.0;
+			const double cosLatitudeRadius = cos(latitudeRadian) * radius;
 
 			double* xyz = new double[3];
-			xyz[0] = x * radius;
-			xyz[1] = y * radius;
-			xyz[2] = z * radius;
+			xyz[0] = sin(latitudeRadian) * radius;
+			xyz[1] = cos(longitueRadian) * cosLatitudeRadius;
+			xyz[2] = sin(longitueRadian) * cosLatitudeRadius;
 			return xyz;
 		}
 };
+
+inline std::ostream& operator<<(std::ostream& os, const Coordonnees& co) {
+	return os << "[" << co.getLongitude() << ", " << co.getLatitude() << "]";
+}
