@@ -3,3 +3,5 @@
 TempIyad/*
 Mesure/mesure.cpp
 Mesure/mesure.h
+*/*.o
+/exec

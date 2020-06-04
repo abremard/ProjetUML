@@ -39,8 +39,8 @@ public:
 	
 		Mesure& lireDonneesMesure(Mesure & mesure, Capteur tabCapteur[], Grandeur tabGrandeur[],int tailleTabCapteur,int tailleTabGrandeur);
 		bool eof();
-		Capteur& FluxLog::lireDonneesCapteur(Capteur& capteur);
-		Grandeur& FluxLog::lireDonneesGrandeur(Grandeur& grandeur);
+		Capteur& lireDonneesCapteur(Capteur& capteur);
+		Grandeur& lireDonneesGrandeur(Grandeur& grandeur);
 		// Mode d'emploi :
 		//	Retourne si l'on a atteind la fin du fichier
 

@@ -15,6 +15,7 @@
 #include<list>
 #include<utility>
 #include <ctime>
+#include <iostream>
 using namespace std;
 
 //------------------------------------------------------------- Constantes

@@ -22,82 +22,82 @@
 
 string AirCleaner::getLatitude() const
 {
-    return this.latitude;
+    return this->latitude;
 }
 
-void setLatitude(string latitude)
+void AirCleaner::setLatitude(string latitude)
 {
-    this.latitude = latitude;
+    this->latitude = latitude;
 }
 
 string AirCleaner::getLongitude() const
 {
-    return this.longitude;
+    return this->longitude;
 }
 
-void setLongitude(string longitude)
+void AirCleaner::setLongitude(string longitude)
 {
-    this.longitude = longitude;
+    this->longitude = longitude;
 }
 
 string AirCleaner::getIdentifiant() const
 {
-    return this.identifiant;
+    return this->identifiant;
 }
 
-void setIdentifiant(string identifiant)
+void AirCleaner::setIdentifiant(string identifiant)
 {
-    this.identifiant = identifiant;
+    this->identifiant = identifiant;
 }
 
 string AirCleaner::getModele() const
 {
-    return this.modele;
+    return this->modele;
 }
 
-void setModele(string modele)
+void AirCleaner::setModele(string modele)
 {
-    this.modele = modele;
+    this->modele = modele;
 }
 
 time_t AirCleaner::getDateMiseEnService() const
 {
-    return this.dateMiseEnService;
+    return this->dateMiseEnService;
 }
 
-void setDateMiseEnService(time_t dateMiseEnService)
+void AirCleaner::setDateMiseEnService(time_t dateMiseEnService)
 {
-    this.dateMiseEnService = dateMiseEnService;
+    this->dateMiseEnService = dateMiseEnService;
 }
 
 string AirCleaner::getNumeroDeSerie() const
 {
-    return this.numeroDeSerie;
+    return this->numeroDeSerie;
 }
 
-void setNumeroDeSerie(string numeroDeSerie)
+void AirCleaner::setNumeroDeSerie(string numeroDeSerie)
 {
-    this.numeroDeSerie = numeroDeSerie;
+    this->numeroDeSerie = numeroDeSerie;
 }
 
 string AirCleaner::getEtat() const
 {
-    return this.etat;
+    return this->etat;
 }
 
-void setEtat(string etat)
+void AirCleaner::setEtat(string etat)
 {
-    this.etat = etat;
+    this->etat = etat;
 }
 
 list<pair<time_t, double>> AirCleaner::getHistoriqueAcitivte() const
 {
-    return this.historiqueAcitivte;
+    return this->historiqueAcitivte;
 }
 
-void setHistoriqueAcitivte(list<pair<time_t, double>> historiqueAcitivte)
+void AirCleaner::setHistoriqueAcitivte(list<pair<time_t, double>> historiqueAcitivte)
 {
-    this.historiqueAcitivte = historiqueAcitivte;
+    this->historiqueAcitivte = historiqueAcitivte;
 }
 //------------------------------------------------- Surcharge d'opérateurs
 //Ensemble& Ensemble::operator = (const Ensemble& unEnsemble)
@@ -110,13 +110,13 @@ void setHistoriqueAcitivte(list<pair<time_t, double>> historiqueAcitivte)
 
 AirCleaner::AirCleaner(string latitude, string longitude, string identifiant, string modele, string numeroDeSerie, string etat, time_t dateMiseEnService)
 {
-this.latitude=latitude;
-this.longitude=longitude;
-this.identifiant=identifiant;
-this.modele=modele;
-this.numeroDeSerie=numeroDeSerie;
-this.etat=etat;
-this.dateMiseEnService=dateMiseEnService;
+this->latitude=latitude;
+this->longitude=longitude;
+this->identifiant=identifiant;
+this->modele=modele;
+this->numeroDeSerie=numeroDeSerie;
+this->etat=etat;
+this->dateMiseEnService=dateMiseEnService;
 }
 
 AirCleaner::~AirCleaner()
