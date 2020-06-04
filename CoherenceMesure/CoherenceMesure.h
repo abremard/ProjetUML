@@ -16,26 +16,30 @@ public:
 
     //----------------------------------------------------- Méthodes publiques
     
-    float moyenneMesures(const list<Mesure> & mesuresList);
+        float moyenneMesures(const list<Mesure> & mesuresList);
 
-    float eTypeMesures(const list<Mesure> & mesuresList,const float moyenne);
+        float eTypeMesures(const list<Mesure> & mesuresList,const float moyenne);
 
-    bool testMesureAcceptable(const list<Mesure> & mesuresTemoinList,const Mesure & mesure);//revoie 1 si mesure est cohérente par rapport à l'échantillon témoin
-    
-    list <Mesure> listeMesuresInnacceptables(const list<Mesure> & mesuresSuspectesList , list<Mesure> & mesuresTemoinList); //liste des mesures innacceptables detectées par le test de chevaunet
+        //revoie 1 si mesure est cohérente par rapport à l'échantillon témoin (test de Chevaunet)
+        bool testMesureAcceptable(const list<Mesure> & mesuresTemoinList,const Mesure & mesure);
+        
+        //liste des mesures innacceptables detectées par le test de chevaunet
+        list <Mesure> listeMesuresInnacceptables(const list<Mesure> & mesuresSuspectesList , list<Mesure> & mesuresTemoinList);
 
-    list <Mesure> listeMesuresCritiques (const list<Mesure> & mesuresSuspectesList , list<Mesure> & mesuresTemoinList);
+        //renvoie les valeurs de la liste suspectes inferieurs ou superieurs à 95 % des valeurs de la list témoin
+        list <Mesure> listeMesuresCritiques (const list<Mesure> & mesuresSuspectesList , list<Mesure> & mesuresTemoinList); 
     //-------------------------------------------- Constructeurs - destructeur
     
-    CoherenceMesure(){};
+        CoherenceMesure(){};
 
-    virtual ~CoherenceMesure(){};
+        virtual ~CoherenceMesure(){};
 
 protected:
     //----------------------------------------------------- Méthodes privees
-    bool calculTestChauvenet(const Mesure & mesureSuspecte,const int nbMesureTemoin,const float moyenneTemoin,const float ecartTyeTemoin);
-    
-    void bornesCinqPourcents(list <Mesure> mesuresList, float & bInf, float & bSup); //trie la liste puis retourne par passage de parametre les premieres valeurs inférieurs et superieurs à 95% des valeurs  
+        bool calculTestChauvenet(const Mesure & mesureSuspecte,const int nbMesureTemoin,const float moyenneTemoin,const float ecartTyeTemoin);
+        
+        //trie la liste puis retourne par passage de parametre les premieres valeurs inférieurs et superieurs à 95% des valeurs  
+        void bornesCinqPourcents(list <Mesure> mesuresList, float & bInf, float & bSup); 
 
 };
 
