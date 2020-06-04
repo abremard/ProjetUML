@@ -9,7 +9,7 @@ using namespace std;
 #include <iostream>
 #include <list>
 #include <algorithm>
- 
+ /*
 // Main de tests:
     //dans le repertoire Mesure:
     //g++ -c Mesure.cpp
@@ -124,6 +124,7 @@ int main()
     
     return 0; 
 }
+*/
 bool conditionTri(Mesure m1 , Mesure m2){
     return (m1.GetValeur() < m2.GetValeur());
 } 
