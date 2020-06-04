@@ -31,7 +31,7 @@ public:
     void SetIdentifiant( string identifiant ), SetDescription( string description ), SetUnite( string unite );
 
 //-------------------------------------------- Constructeurs - destructeur
-    Grandeur ( string Identifiant, string Description, string Unite );
+    Grandeur ( string Identifiant = "", string Description = "", string Unite = "");
     ~Grandeur ( );
 
 //------------------------------------------------------------------ PRIVE

@@ -333,6 +333,8 @@ inline std::ostream& operator<<(std::ostream& os, const GeoMap& geo) {
 
 
 
+#include "../Capteur/Capteur.h"
+#include "../Grandeur/Grandeur.h"
 
 // TEST
 using namespace std;
@@ -342,6 +344,7 @@ class GeoMap_TEST
 		void run() {
 			inArea_TEST();
 			projection_TEST();
+			insert_size_TEST();
 		}
 
 		void inArea_TEST() {
@@ -370,6 +373,19 @@ class GeoMap_TEST
 				{
 					Coordonnees c(i, j);
 					cout << c << " ->\t" << geo.projection(c) << endl;
+				}
+			}
+		}
+
+		void insert_size_TEST() {
+			GeoMap geo(-50, 50, -50, 50);
+			for (int i = -10; i <= 10; i++)
+			{
+				for (int j = -10; j <= 10; j++)
+				{
+					Mesure m(0, 0, Capteur("", Coordonnees(i, j)));
+					geo.insert(m);
+					cout << geo.size() << " ";
 				}
 			}
 		}
