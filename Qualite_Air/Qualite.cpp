@@ -34,6 +34,8 @@ resultat qualiteMoyenne(const GeoMap geomap, const Coordonnees centre, const flo
     {
         Mesure mesure = *it;
   
+        cout << mesure.GetValeur() << endl;
+
         float valeur = mesure.GetValeur(); // Valeur de mesure
         string grandeur = mesure.GetGrandeur().GetIdentifiant();
 

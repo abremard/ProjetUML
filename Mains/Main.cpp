@@ -11,6 +11,21 @@ using namespace std;
 int main(void) {
 	//GeoMap_TEST gmt;
 	//gmt.run();
+
+	// while(true) {
+	// cout << "Action a effectuer ?" << endl << "1:\tlire les donnees" << endl << "2:\tcentre + rayon" << endl;
+	// int action;
+	// cin >> action;
+	// switch(action) {
+	// 	case 1: {
+	// 		break;
+	// 	}
+	// 	case 2: {
+	// 		break;
+	// 	}
+	// }
+	// }
+
 	GeoMap gm = GeoMap();
 	Grandeur tabgrande[4];
 	Capteur cap[98];
@@ -35,7 +50,7 @@ int main(void) {
 		gm.insert(mes[i]);
 		i++;
 	}
-	Coordonnees centre = Coordonnees(40.0, 0.0);
+	Coordonnees centre = Coordonnees(0.0, 0.0);
 
 	time_t dateDebut;
 	time_t dateFin;
@@ -50,7 +65,29 @@ int main(void) {
 	strptime(fin.c_str(),"%Y-%m-%d %H:%M:%S",&tm);
 	dateFin=mktime(&tm);
 
-	resultat res = qualiteMoyenne(gm, centre, 2.0, dateDebut, dateFin);
+	resultat res = qualiteMoyenne(gm, centre, 10000.0, dateDebut, dateFin);
 
-	cout << res.NO2.ET;
+	cout << "------NO2-----" << endl;
+	cout << "Ecart-type " << res.NO2.ET << endl;
+	cout << "Max " << res.NO2.max << endl;
+	cout << "Min " << res.NO2.min << endl;
+	cout << "Moyenne " << res.NO2.moy << endl;
+
+	cout << "------O3-----" << endl;
+	cout << "Ecart-type " << res.O3.ET << endl;
+	cout << "Max " << res.O3.max << endl;
+	cout << "Min " << res.O3.min << endl;
+	cout << "Moyenne " << res.O3.moy << endl;
+
+	cout << "------PM10-----" << endl;
+	cout << "Ecart-type " << res.PM10.ET << endl;
+	cout << "Max " << res.PM10.max << endl;
+	cout << "Min " << res.PM10.min << endl;
+	cout << "Moyenne " << res.PM10.moy << endl;
+
+	cout << "------SO2-----" << endl;
+	cout << "Ecart-type " << res.SO2.ET << endl;
+	cout << "Max " << res.SO2.max << endl;
+	cout << "Min " << res.SO2.min << endl;
+	cout << "Moyenne " << res.SO2.moy << endl;
 }
