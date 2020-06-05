@@ -17,7 +17,7 @@
 #include <time.h>
 using namespace std;
 
-#include "Ligne.h"
+
 #include "../Mesure/Mesure.h"
 
 //------------------------------------------------------------- Constantes

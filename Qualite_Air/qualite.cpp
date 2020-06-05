@@ -1,7 +1,7 @@
 using namespace std;
 #include <iostream>
 
-#include "qualite.h"
+#include "Qualite.h"
 #include "math.h"
 
 

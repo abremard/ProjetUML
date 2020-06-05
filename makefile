@@ -1,5 +1,5 @@
 CPP=g++
-CPPFLAGS= -DMAP -Wall -ansi -pedantic -std=c++11 -ggdb3 #Ajouter ou retirer le flag -DMAP pour tracer les contructeurs/destructeurs
+CPPFLAGS= -Wall -ansi -pedantic -std=c++11 -ggdb3 #Ajouter ou retirer le flag -DMAP pour tracer les contructeurs/destructeurs
 
 MAIN=exec
 SRCS=$(wildcard */*.cpp)
@@ -12,5 +12,6 @@ $(MAIN): $(OBJS)
 	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 .PHONY: clean
+
 clean:
-	rm *.o $(MAIN)
+	rm */*.o $(MAIN)
