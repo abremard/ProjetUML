@@ -19,6 +19,13 @@ class Capteur
 		inline Coordonnees getCoordonnes() const { return coordonnees; }
 		inline string getDescription() const { return description; }
 
+		inline Coordonnees& operator =(const Capteur& c) {
+			id = c.id;
+			coordonnees = c.coordonnees;
+			description = c.description;
+			return *this;
+		}
+
 	protected:
 		string id;
 		Coordonnees coordonnees;
