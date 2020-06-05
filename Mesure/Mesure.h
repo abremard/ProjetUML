@@ -38,6 +38,13 @@ public:
     inline bool operator <(const Mesure& coord) const {
         return	Timestamp < coord.Timestamp;
     }
+    inline Mesure& operator =(const Mesure& m) {
+        Timestamp = m.Timestamp;
+        Valeur = m.Valeur;
+        capteur = m.capteur;
+        grandeur = m.grandeur;
+        return *this;
+    }
 
 //-------------------------------------------- Constructeurs - destructeur
     Mesure(){};
