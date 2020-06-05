@@ -40,7 +40,6 @@ void Grandeur::SetUnite( const string unite ) {
 }
 
 string Grandeur::GetIdentifiant() {
-    cout << "Identifiant : " << Identifiant << endl;
     return Identifiant;
 }
 

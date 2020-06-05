@@ -27,13 +27,13 @@ int main(void) {
 	// }
 
 	GeoMap gm = GeoMap();
-	Grandeur tabgrande[4];
+	Grandeur tabgrande[5];
 	Capteur cap[98];
-	Mesure mes[1000];
+	Mesure mes[10000];
 	FluxLog flux = FluxLog("donne.csv");
 	int i=0;
 	
-	while(!flux.eof() && i<4){
+	while(!flux.eof() && i<5){
 		tabgrande[i]=flux.lireDonneesGrandeur(tabgrande[i]);
 		i++;
 	}
@@ -45,12 +45,14 @@ int main(void) {
 	}
 	i=0;
 	FluxLog me = FluxLog("mes.csv");
-	while(!me.eof() && i<1000){
-		mes[i]=me.lireDonneesMesure(mes[i],cap,tabgrande,98,4);
+	while(!me.eof() && i<10000){
+		mes[i]=me.lireDonneesMesure(mes[i],cap,tabgrande,98,5);
 		gm.insert(mes[i]);
 		i++;
 	}
 	Coordonnees centre = Coordonnees(0.0, 0.0);
+
+	cout << " size gm " << gm.size() << endl;
 
 	time_t dateDebut;
 	time_t dateFin;
@@ -65,7 +67,7 @@ int main(void) {
 	strptime(fin.c_str(),"%Y-%m-%d %H:%M:%S",&tm);
 	dateFin=mktime(&tm);
 
-	resultat res = qualiteMoyenne(gm, centre, 10000.0, dateDebut, dateFin);
+	resultat res = qualiteMoyenne(gm, centre, 10000000000.0, dateDebut, dateFin);
 
 	cout << "------NO2-----" << endl;
 	cout << "Ecart-type " << res.NO2.ET << endl;
@@ -90,4 +92,27 @@ int main(void) {
 	cout << "Max " << res.SO2.max << endl;
 	cout << "Min " << res.SO2.min << endl;
 	cout << "Moyenne " << res.SO2.moy << endl;
+	
+	
+    cout<<endl<<"Identification d'une mesure fausse: "<<endl;
+    	Mesure mesureTest = mes[5];
+	list <Mesure> echantillonTemoin = gm.get(mesureTest.GetCapteur().getCoordonnes(),1000000000000000000); 
+	cout<<"Mesure testee: ";
+	cout<<" coordonnee: "<<mesureTest.GetCapteur().getCoordonnes();
+	mesureTest.Afficher();
+	//affichage
+	list <Mesure>::const_iterator it;
+    cout<<endl<<"Construction de l'échantillon temoins: "; 
+	for(it=echantillonTemoin.begin();it!=echantillonTemoin.end();++it){
+	 it->Afficher();
+	 cout<<" coordonnee: "<<mesureTest.GetCapteur().getCoordonnes();
+	 cout<<"  |  ";
+	}
+	cout<<"nbMesuresTemoin: "<<echantillonTemoin.size()<<endl;
+	cout<<endl;
+
+	CoherenceMesure coherenceMesure;
+	cout<<"Moyenne: "<<coherenceMesure.moyenneMesures(echantillonTemoin)<<endl;
+	cout<<"Ecart type de echantillon temoin: "<< coherenceMesure.eTypeMesures(echantillonTemoin,coherenceMesure.moyenneMesures(echantillonTemoin))<<endl;
+	cout<<"La mesure est acceptable? "<<coherenceMesure.testMesureAcceptable(echantillonTemoin,mesureTest)<<endl;
 }
