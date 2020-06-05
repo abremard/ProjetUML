@@ -8,7 +8,7 @@ Les trajets sont contenus dans une liste chainée de trajets (cf. struct listeTr
 using namespace std;
 #include <ctime>
 #include <string>
-#include "../Coordonnees/coordonnees.h"
+#include "../Coordonnees/Coordonnees.h"
 #include "../GeoMap/GeoMap.h"
 
 //---------- Interface de la classe <Qualite> (fichier Qualite.h) ----------------

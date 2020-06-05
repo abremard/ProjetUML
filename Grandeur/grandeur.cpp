@@ -15,7 +15,7 @@ using namespace std;
 #include <iostream>
 #include <string>
 //------------------------------------------------------ Include personnel
-#include "grandeur.h"
+#include "Grandeur.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
