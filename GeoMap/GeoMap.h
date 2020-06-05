@@ -43,6 +43,26 @@ class GeoMap
 
 		list<Mesure> get(const Coordonnees& center = Coordonnees(), double rayon = 0, time_t debut = MIN_TIME_STAMP, time_t fin = MAX_TIME_STAMP) const;
 
+		void affi() {
+			if (mode == Mode::values)
+			{
+				for (unsigned int i = 0; i < content.values.count; ++i)
+				{
+					for (Mesure m : content.values.values[i])
+					{
+						m.Afficher();
+					}
+				}
+			}
+			else
+			{
+				(*content.subMaps.topLeft).affi();
+				(*content.subMaps.topRight).affi();
+				(*content.subMaps.bottomLeft).affi();
+				(*content.subMaps.bottomRight).affi();
+			}
+		}
+
 	protected:
 		// ATTRIBUTS ////////////////////////////////////////////////////////////////////////////////////////
 		struct {
