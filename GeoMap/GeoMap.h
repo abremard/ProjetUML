@@ -1,3 +1,5 @@
+// date de dernière modif : 05/06/2020, 12h20
+
 #pragma once
 #include <iostream>
 #include <set>
@@ -10,9 +12,10 @@
  */
 class GeoMap
 {
-	public:
 		// AMITIE ///////////////////////////////////////////////////////////////////////////////////////////
 		friend std::ostream& operator<<(std::ostream& os, const GeoMap& geo);
+
+	public:
 
 		// CONSTANTES ///////////////////////////////////////////////////////////////////////////////////////
 		static const unsigned int DEFAULT_MAX_VALUES = 10;
