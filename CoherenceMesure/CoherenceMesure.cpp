@@ -99,7 +99,7 @@ bool CoherenceMesure::testMesureAcceptable(const list<Mesure> & mesuresTemoinLis
 list<Mesure> CoherenceMesure::listeMesuresCritiques (const list<Mesure> & mesuresSuspectesList , list<Mesure> & mesuresTemoinList){
 //pour un echantillon de valeurs suspectes, retourne la liste des valeurs critiques (inférieurs ou superieurs à 95% des valeurs témoins)
 
-    int nbCritiques = 0; 
+    //int nbCritiques = 0; 
     float bInf = 0;
     float bSup = 0;
     bornesCinqPourcents(mesuresTemoinList,bInf,bSup);
