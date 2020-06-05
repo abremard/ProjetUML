@@ -1,3 +1,6 @@
+******Ceci est le projet GL de Iyad TOUT-Alexandre BREMARD-Sylvain DE VERCLOS-Eric TESTU******
+----------------------------------------------------------------------------------------------
+
 Instructions pour l'installation/compilation :
 
 Methode 1 : IDE
@@ -18,3 +21,5 @@ Instructions pour l'utilisation :
 $cd [lien vers le répertoire du projet]/ProjetUML
 4-Taper puis appuier sur la touche entrée :
 $./exec
+5-Pour supprimer les éxecutables taper puis appuier sur la touche entrée :
+$make clean
