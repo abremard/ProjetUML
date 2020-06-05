@@ -6,6 +6,7 @@
 #include "../Mesure/Mesure.h"
 #include "../Capteur/Capteur.h"
 #include "../Qualite_Air/Qualite.h"
+#include "../CoherenceMesure/CoherenceMesure.h" 
 using namespace std;
 
 int main(void) {
@@ -96,7 +97,7 @@ int main(void) {
 	
     cout<<endl<<"Identification d'une mesure fausse: "<<endl;
     	Mesure mesureTest = mes[5];
-	list <Mesure> echantillonTemoin = gm.get(mesureTest.GetCapteur().getCoordonnes(),1000000000000000000); 
+	list <Mesure> echantillonTemoin = gm.get(mesureTest.GetCapteur().getCoordonnes(),20000); 
 	cout<<"Mesure testee: ";
 	cout<<" coordonnee: "<<mesureTest.GetCapteur().getCoordonnes();
 	mesureTest.Afficher();
