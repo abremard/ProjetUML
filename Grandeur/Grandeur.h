@@ -29,6 +29,12 @@ public:
     void Afficher() const;
     string GetIdentifiant(), GetDescription(), GetUnite();
     void SetIdentifiant( string identifiant ), SetDescription( string description ), SetUnite( string unite );
+    inline Grandeur& operator =(const Grandeur& m) {
+        Identifiant = m.Identifiant;
+        Description = m.Description;
+        Unite = m.Unite;
+        return *this;
+    }
 
 //-------------------------------------------- Constructeurs - destructeur
     Grandeur ( string Identifiant = "", string Description = "", string Unite = "");
