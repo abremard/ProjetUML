@@ -1,4 +1,5 @@
-// date de dernière modif : 05/06/2020, 12h20
+// date de dernière modif : 05/06/2020, 14h50
+// constantes numériques pour les time_stamps limites
 
 #pragma once
 #include <iostream>
@@ -16,9 +17,10 @@ class GeoMap
 		friend std::ostream& operator<<(std::ostream& os, const GeoMap& geo);
 
 	public:
-
 		// CONSTANTES ///////////////////////////////////////////////////////////////////////////////////////
 		static const unsigned int DEFAULT_MAX_VALUES = 10;
+		static const time_t MIN_TIME_STAMP = (time_t)0;
+		static const time_t MAX_TIME_STAMP = (time_t)(~0u);
 
 		// CONSTRUCTEURS ET DESTRUCTEURS ////////////////////////////////////////////////////////////////////
 		GeoMap(double MinLongitude = -180.0, double MaxLongitude = +180.0, double MinLatitude = -90.0, double MaxLatitude = +90.0, unsigned int maxValPerSubMap = DEFAULT_MAX_VALUES);
@@ -39,7 +41,7 @@ class GeoMap
 
 		bool insert(const Mesure& mesure);
 
-		list<Mesure> get(const Coordonnees& center = Coordonnees(), double rayon = 0, time_t debut = (time_t)0, time_t fin = (time_t)(~0u)) const;
+		list<Mesure> get(const Coordonnees& center = Coordonnees(), double rayon = 0, time_t debut = MIN_TIME_STAMP, time_t fin = MAX_TIME_STAMP) const;
 
 	protected:
 		// ATTRIBUTS ////////////////////////////////////////////////////////////////////////////////////////
