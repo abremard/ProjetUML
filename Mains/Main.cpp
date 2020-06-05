@@ -92,4 +92,27 @@ int main(void) {
 	cout << "Max " << res.SO2.max << endl;
 	cout << "Min " << res.SO2.min << endl;
 	cout << "Moyenne " << res.SO2.moy << endl;
+	
+	
+    cout<<endl<<"Identification d'une mesure fausse: "<<endl;
+    	Mesure mesureTest = mes[5];
+	list <Mesure> echantillonTemoin = gm.get(mesureTest.GetCapteur().getCoordonnes(),1000000000000000000); 
+	cout<<"Mesure testee: ";
+	cout<<" coordonnee: "<<mesureTest.GetCapteur().getCoordonnes();
+	mesureTest.Afficher();
+	//affichage
+	list <Mesure>::const_iterator it;
+    cout<<endl<<"Construction de l'échantillon temoins: "; 
+	for(it=echantillonTemoin.begin();it!=echantillonTemoin.end();++it){
+	 it->Afficher();
+	 cout<<" coordonnee: "<<mesureTest.GetCapteur().getCoordonnes();
+	 cout<<"  |  ";
+	}
+	cout<<"nbMesuresTemoin: "<<echantillonTemoin.size()<<endl;
+	cout<<endl;
+
+	CoherenceMesure coherenceMesure;
+	cout<<"Moyenne: "<<coherenceMesure.moyenneMesures(echantillonTemoin)<<endl;
+	cout<<"Ecart type de echantillon temoin: "<< coherenceMesure.eTypeMesures(echantillonTemoin,coherenceMesure.moyenneMesures(echantillonTemoin))<<endl;
+	cout<<"La mesure est acceptable? "<<coherenceMesure.testMesureAcceptable(echantillonTemoin,mesureTest)<<endl;
 }
