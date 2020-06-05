@@ -64,7 +64,13 @@ bool GeoMap::insert(const Mesure& mesure) {
 				content.values.values[content.values.count] = set<Mesure>();
 
 				// on tente d'ins�rer
-				bool out = (content.values.values[content.values.count].insert(mesure)).second;
+				
+				//bool out = (content.values.values[content.values.count].insert(mesure)).second;
+				//////////////////////////////////////////
+				auto pair = content.values.values[content.values.count].insert(mesure);
+				bool out = pair.second;
+				cout << "t:" << (*(pair.first)).GetTimestamp() << " v:" << (*(pair.first)).GetValeur() << " g:" << (*(pair.first)).GetGrandeur().GetIdentifiant() << endl;
+				/////////////////////////////////////////
 
 				if (out)
 				{
@@ -185,7 +191,7 @@ void GeoMap::affi() const {
 		{
 			for (Mesure m : content.values.values[i])
 			{
-				cout << "t:" << m.GetTimestamp() << " v:" << m.GetValeur << " g:" << m.GetGrandeur().GetIdentifiant() << endl;
+				cout << "t:" << m.GetTimestamp() << " v:" << m.GetValeur() << " g:" << m.GetGrandeur().GetIdentifiant() << endl;
 			}
 		}
 	}
