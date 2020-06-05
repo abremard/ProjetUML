@@ -1,7 +1,9 @@
 using namespace std;
 #include <iostream>
+#include <float.h>
 
 #include "Qualite.h"
+
 #include "math.h"
 
 
@@ -11,16 +13,16 @@ resultat qualiteMoyenne(const GeoMap geomap, const Coordonnees centre, const flo
 
     // Moyenne pour chaque concentration
     float moyO3, moyNO2, moySO2, moyPM10;
-    moyO3 = moyNO2 = moySO2 = moyPM10 = 0.0;
+    moyO3 = moyNO2 = moySO2 = moyPM10 = 0.0f;
     // Ecart-Type pour chaque concentration
     float etO3, etNO2, etSO2, etPM10;
-    etO3 = etNO2 = etSO2 = etPM10 = 0.0;
+    etO3 = etNO2 = etSO2 = etPM10 = 0.0f;
     // Minimum pour chaque concentration
     float minO3, minNO2, minSO2, minPM10;
-    minO3 = minNO2 = minSO2 = minPM10 = 999999.9;
+    minO3 = minNO2 = minSO2 = minPM10 = FLT_MAX;
     // Maximum pour chaque concentration
     float maxO3, maxNO2, maxSO2, maxPM10;
-    maxO3 = maxNO2 = maxSO2 = maxPM10 = 0.0;
+    maxO3 = maxNO2 = maxSO2 = maxPM10 = FLT_MIN;
     // Nombre de mesures pour chaque concentration
     int nbO3, nbNO2, nbSO2, nbPM10;
     nbO3 = nbNO2 = nbSO2 = nbPM10 = 0;
