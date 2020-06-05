@@ -41,16 +41,17 @@ Mesure& FluxLog::lireDonneesMesure(Mesure& mesure, Capteur tabCapteur[], Grandeu
 	
 	mesure.SetValeur(stof(valeurNotParsed)); //set la valeur de la mesure
 	for(int i=0;i<tailleTabCapteur;++i){	 //set le capteur de la mesure
-		if(tabCapteur[i].getId()==capteurNotParsed)
+		if(!strcmp(tabCapteur[i].getId().c_str(), capteurNotParsed.c_str()))
 			mesure.SetCapteur(tabCapteur[i]);
 	}
 	for(int i=0;i<tailleTabGrandeur;++i){	 //set la grandeur de la mesure
-		if(tabGrandeur[i].GetIdentifiant()==grandeurNotParsed)
+		if(!strcmp(tabGrandeur[i].GetIdentifiant().c_str(), grandeurNotParsed.c_str()))
 			mesure.SetGrandeur(tabGrandeur[i]);
 	}
 	struct tm tm;
 	strptime(TimestampNotParsed.c_str(),"%Y-%m-%d %H:%M:%S",&tm);
 	TimestampParsed=mktime(&tm);
+	mesure.SetTimestamp(TimestampParsed);
 	return mesure;
 }
 
@@ -87,6 +88,8 @@ Grandeur& FluxLog::lireDonneesGrandeur(Grandeur& grandeur){
 	grandeur.Identifiant=grandeurNotParsed;
 	grandeur.Unite=uniteNotParsed;
 	grandeur.Description=descripNotParsed;
+
+	cout << grandeur.GetIdentifiant() << " " << grandeur.GetUnite() << " " << grandeur.GetDescription() << endl;
 
 	return grandeur;
 }

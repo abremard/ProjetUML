@@ -47,12 +47,12 @@ void Mesure::SetValeur( float valeur ) {
     Valeur = valeur;
 }
 
-void Mesure::SetCapteur( Capteur capteur ) {
-    capteur = capteur;
+void Mesure::SetCapteur( Capteur cap ) {
+    capteur = cap;
 }
 
-void Mesure::SetGrandeur( Grandeur grandeur ) {
-    grandeur = grandeur;
+void Mesure::SetGrandeur( Grandeur grd ) {
+    grandeur = grd;
 }
 
 void Mesure::Afficher() const // Parcours de la liste avec un curseur et appel de la méthode Affichage pour chaque objet Trajet

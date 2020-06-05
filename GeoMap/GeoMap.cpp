@@ -1,4 +1,4 @@
-// date de dernière modif : 05/06/2020, 12h20
+// date de derniï¿½re modif : 05/06/2020, 12h20
 
 #include "GeoMap.h"
 
@@ -43,27 +43,27 @@ bool GeoMap::insert(const Mesure& mesure) {
 		{
 			// on est en mode valeur
 
-			// recherche d'un set avec les bonnes coordonnées
+			// recherche d'un set avec les bonnes coordonnï¿½es
 			for (unsigned int i = 0; i < content.values.count; ++i)
 			{
 				if ((*content.values.values[i].begin()).GetCapteur().getCoordonnes() == c)
 				{
-					// set avec les bonnes coordonnées
+					// set avec les bonnes coordonnï¿½es
 
-					// on tente d'insérer
+					// on tente d'insï¿½rer
 					return (content.values.values[i].insert(mesure)).second;
 				}
 			}
 
-			// pas de set avec les bonnes coordonnées
+			// pas de set avec les bonnes coordonnï¿½es
 
 			if (content.values.count < content.values.maxCount)
 			{
-				// on ajoute un set avec les bonnes coordonnées
+				// on ajoute un set avec les bonnes coordonnï¿½es
 
 				content.values.values[content.values.count] = set<Mesure>();
 
-				// on tente d'insérer
+				// on tente d'insï¿½rer
 				bool out = (content.values.values[content.values.count].insert(mesure)).second;
 
 				if (out)
@@ -76,7 +76,7 @@ bool GeoMap::insert(const Mesure& mesure) {
 			}
 			else
 			{
-				// tableau de set déjà plein, on divise en sous maps
+				// tableau de set dï¿½jï¿½ plein, on divise en sous maps
 
 				GeoMap* TopLeft = new GeoMap(bounds.minLongitude, (bounds.minLongitude + bounds.maxLongitude) / 2, bounds.minLatitude, (bounds.minLatitude + bounds.maxLatitude) / 2, content.values.count);
 				GeoMap* TopRight = new GeoMap((bounds.minLongitude + bounds.maxLongitude) / 2, bounds.maxLongitude, bounds.minLatitude, (bounds.minLatitude + bounds.maxLatitude) / 2, content.values.count);
@@ -94,7 +94,7 @@ bool GeoMap::insert(const Mesure& mesure) {
 					} while (false);
 				}
 
-				// on place la valeur à insérer dans une des sous maps
+				// on place la valeur ï¿½ insï¿½rer dans une des sous maps
 				bool out = false;
 				do {
 					if (out = TopLeft->insert(mesure)) break;
@@ -118,7 +118,7 @@ bool GeoMap::insert(const Mesure& mesure) {
 		{
 			// on est en mode sous maps
 
-			// on place la valeur à insérer dans une des sous maps
+			// on place la valeur ï¿½ insï¿½rer dans une des sous maps
 			bool out = false;
 			do {
 				if (out = content.subMaps.topLeft->insert(mesure)) break;
@@ -143,7 +143,7 @@ list<Mesure> GeoMap::get(const Coordonnees& center, double rayon, time_t debut, 
 
 	if (inArea(center) || center.distanceTo(projection(center)) <= rayon)
 	{
-		// la zone de recherche coincide avec la région couverte
+		// la zone de recherche coincide avec la rï¿½gion couverte
 
 		if (mode == Mode::values)
 		{
@@ -152,7 +152,7 @@ list<Mesure> GeoMap::get(const Coordonnees& center, double rayon, time_t debut, 
 			{
 				if (center.distanceTo((*content.values.values[i].begin()).GetCapteur().getCoordonnes()) <= rayon)
 				{
-					// map avec les bonnes coordonnées
+					// map avec les bonnes coordonnï¿½es
 
 					for (Mesure m : content.values.values[i])
 					{
@@ -191,14 +191,14 @@ bool GeoMap::insert(const set<Mesure>& mesures) {
 		{
 			// on est en mode valeur
 
-			// recherche d'un set avec les bonnes coordonnées
+			// recherche d'un set avec les bonnes coordonnï¿½es
 			for (unsigned int i = 0; i < content.values.count; ++i)
 			{
 				if ((*content.values.values[i].begin()).GetCapteur().getCoordonnes() == c)
 				{
-					// set avec les bonnes coordonnées
+					// set avec les bonnes coordonnï¿½es
 
-					// on tente d'insérer
+					// on tente d'insï¿½rer
 					bool out = true;
 					for (Mesure m : mesures)
 					{
@@ -209,15 +209,15 @@ bool GeoMap::insert(const set<Mesure>& mesures) {
 				}
 			}
 
-			// pas de set avec les bonnes coordonnées
+			// pas de set avec les bonnes coordonnï¿½es
 
 			if (content.values.count < content.values.maxCount)
 			{
-				// on ajoute un set avec les bonnes coordonnées
+				// on ajoute un set avec les bonnes coordonnï¿½es
 
 				content.values.values[content.values.count] = set<Mesure>();
 
-				// on tente d'insérer
+				// on tente d'insï¿½rer
 				bool out = true;
 				for (Mesure m : mesures)
 				{
@@ -226,7 +226,7 @@ bool GeoMap::insert(const set<Mesure>& mesures) {
 
 				if (out)
 				{
-					// on a pu insérer dans le nouveau set, on augmente le nombre de set dans le dispositif
+					// on a pu insï¿½rer dans le nouveau set, on augmente le nombre de set dans le dispositif
 					content.values.count++;
 				}
 
@@ -234,7 +234,7 @@ bool GeoMap::insert(const set<Mesure>& mesures) {
 			}
 			else
 			{
-				// tableau de set déjà plein, on divise en sous maps
+				// tableau de set dï¿½jï¿½ plein, on divise en sous maps
 
 				GeoMap* TopLeft = new GeoMap(bounds.minLongitude, (bounds.minLongitude + bounds.maxLongitude) / 2, bounds.minLatitude, (bounds.minLatitude + bounds.maxLatitude) / 2, content.values.count);
 				GeoMap* TopRight = new GeoMap((bounds.minLongitude + bounds.maxLongitude) / 2, bounds.maxLongitude, bounds.minLatitude, (bounds.minLatitude + bounds.maxLatitude) / 2, content.values.count);
@@ -252,7 +252,7 @@ bool GeoMap::insert(const set<Mesure>& mesures) {
 					} while (false);
 				}
 
-				// on place la valeur à insérer dans une des sous maps
+				// on place la valeur ï¿½ insï¿½rer dans une des sous maps
 				for (Mesure m : mesures)
 				{
 					do {

@@ -9,7 +9,11 @@ using namespace std;
 
 resultat qualiteMoyenne(const GeoMap geomap, const Coordonnees centre, const float rayon, const std::time_t dateDebut, const std::time_t dateFin) {
 
+    cout << centre.getLatitude() << " " << centre.getLongitude() << " " << rayon << " " << dateDebut << " " << dateFin << endl;
+
     list<Mesure> listeMesure = geomap.get(centre, rayon, dateDebut, dateFin);
+
+    cout << listeMesure.size() << endl;
 
     // Moyenne pour chaque concentration
     float moyO3, moyNO2, moySO2, moyPM10;
@@ -34,11 +38,9 @@ resultat qualiteMoyenne(const GeoMap geomap, const Coordonnees centre, const flo
     {
         Mesure mesure = *it;
   
-        cout << mesure.GetValeur() << endl;
-
         float valeur = mesure.GetValeur(); // Valeur de mesure
         string grandeur = mesure.GetGrandeur().GetIdentifiant();
-
+        mesure.GetGrandeur().Afficher();
         if (!grandeur.compare("O3")){
             moyO3 = moyO3 + valeur;
             if (valeur > maxO3)
