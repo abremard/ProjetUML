@@ -178,6 +178,26 @@ list<Mesure> GeoMap::get(const Coordonnees& center, double rayon, time_t debut, 
 	return lm;
 }
 
+void GeoMap::affi() const {
+	if (mode == Mode::values)
+	{
+		for (unsigned int i = 0; i < content.values.count; ++i)
+		{
+			for (Mesure m : content.values.values[i])
+			{
+				cout << "t:" << m.GetTimestamp() << " v:" << m.GetValeur << " g:" << m.GetGrandeur().GetIdentifiant() << endl;
+			}
+		}
+	}
+	else
+	{
+		(*content.subMaps.topLeft).affi();
+		(*content.subMaps.topRight).affi();
+		(*content.subMaps.bottomLeft).affi();
+		(*content.subMaps.bottomRight).affi();
+	}
+}
+
 // METHODES PROTEGEES ///////////////////////////////////////////////////////////////////////////////
 
 bool GeoMap::insert(const set<Mesure>& mesures) {
